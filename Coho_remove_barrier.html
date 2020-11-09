@@ -1,0 +1,99 @@
+<html>
+<head>
+
+	<title>Lab 2 Website</title>
+	  <link rel="stylesheet" href="styling.css" type="text/css"/>
+	  <!-- the Leaflet CSS -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+		<!-- the Leaflet JavaScript library -->
+		<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+		<!-- Link to JQuery library-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- LEGEND Plugin-->
+		<script src= "https://cdn.jsdelivr.net/npm/leaflet-legend@1.0.2/leaflet-legend.min.js"></script>
+
+</head>
+
+
+<body>
+
+		<h1>
+			Fish Passage Barriers Removed on Streams Containing Coho Salmon in Washington
+		</h1>
+
+		<div id="map"></div>
+
+    <!-- Map build and funcionality script-->
+		<script src="index.js"></script>
+
+		<!-- Div for LEGEND creation-->
+		<div id="legend">
+			<h3><center>Time Frame of Fish Passage Barrier Removal</center><h3>
+				<ul style="list-style-type:none">
+					<li>
+						<svg width="24" height="24">
+							<circle cx="12" cy="20" r="4" fill="yellow"/>
+						</svg>
+						<text>From 2018 to now</text>
+					</li>
+
+					<li>
+						<svg width="24" height="24">
+							<circle cx="12" cy="20" r="4" fill="orange"/>
+						</svg>
+						<text>From 2015 to 2018</text>
+					</li>
+
+					<li>
+						<svg width="24" height="24">
+							<circle cx="12" cy="20" r="4" fill="red"/>
+						</svg>
+						<text>From 2010 to 2015</text>
+					</li>
+
+					<li>
+						<svg width="24" height="24">
+							<circle cx="12" cy="20" r="4" fill="purple"/>
+						</svg>
+						<text>From 2005 to 2010</text>
+					</li>
+
+					<li>
+						<svg width="24" height="24">
+							<circle cx="12" cy="20" r="4" fill="blue"/>
+						</svg>
+						<text>From 2000 to 2005</text>
+					</li>
+
+					<li>
+						<svg width="24" height="24">
+							<circle cx="12" cy="20" r="4" fill="green"/>
+						</svg>
+						<text>Before 2000</text>
+					</li>
+
+					<li>
+						<svg width="24" height="24">
+							<line x1="5" y1="5" x2="160" y2="160" style="stroke:#0080ff;stroke-width:1.5"/>
+						</svg>
+						<text>Known distribution of coho</text>
+					</li>
+				</div>
+
+  <!-- Script for LEGEND to appear on map -->
+	<script>
+		var Legend =  new L.Control.Legend({
+			position: 'bottomright',
+			});
+			mymap.addControl(Legend);
+			$(".legend-container").append( $("#legend") );
+	</script>
+
+</body>
+
+<p>This map depicts fish passage barriers that have been corrected on streams known to have coho, along with the known distribution of coho salmon in Washington.</p>
+<p>The coho distribution file is from streamsnet.org (January 2019). This file was edited to decrease the size by removing unecessary attributes and by using mapshaper.org to simplify it. </p>
+<p>The corrected fish barriers passages is from the WSDOT and was retrieved from: https://geo.wa.gov/datasets. Only barriers with the species attribute containing coho were selected.</p>
+<p>Both layers were reprojected into GCS_WGS_1984 and converted into GeoJSON using QGIS</p>
+
+</html>
